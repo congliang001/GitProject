@@ -1,3 +1,5 @@
+package GitProject;
+
 public class No2 {
     public static void main(String[] args) {
         ListNode l1 = new ListNode();
@@ -72,3 +74,4 @@ class ListNode {
         this.next = next;
     }
 }
+
