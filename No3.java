@@ -1,30 +1,23 @@
 package GitProject;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class No3 {
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring("abcdefghij"));
     }
     public static int lengthOfLongestSubstring(String s) {
-        int  right = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        int left = 0, right = 0;
         int result = 0;
-        Set<Character> set = new HashSet<>();
-        for(int left = 0; left < s.length(); left++){
-            if(left != 0){
-                set.remove(s.charAt(left - 1));
+        for(left = 0, right = 0; right < s.length(); right ++){
+            if(map.containsKey(s.charAt(right))){
+                left = Math.max(left, map.get(s.charAt(right)) + 1);
             }
-            while(right < s.length()){
-                if(set.contains(s.charAt(right))){
-                    break;
-                }else{
-                    set.add(s.charAt(right));
-                    if(right != s.length() - 1){
-                        right ++;
-                    }
-                }
-            }
+            map.put(s.charAt(right),right);
             result = Math.max(result, right - left + 1);
         }
         return result;

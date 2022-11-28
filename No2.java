@@ -73,5 +73,21 @@ class ListNode {
         this.val = val;
         this.next = next;
     }
+
+
+    @Override
+    public String toString() {
+        ListNode cur = this;
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
+        while (cur != null){
+            builder.append(cur.val);
+            builder.append(",");
+            cur = cur.next;
+        }
+        builder.deleteCharAt(builder.length() - 1);
+        builder.append("]");
+        return  builder.toString();
+    }
 }
 
